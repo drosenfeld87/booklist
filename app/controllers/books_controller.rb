@@ -4,6 +4,9 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       format.html
+      format.csv do
+        render plain: Book.generate_csv(@books)
+      end
       format.text
       format.json do
         render json: @books.map { |book|
